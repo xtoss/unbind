@@ -10,7 +10,7 @@ Four kinds of entries / 四种手法:
 
 - **absurd / 荒诞**: contrast, e.g. "root canal". 靠反差，比如"补牙"。
 - **hard unbind / 硬解绑**: not a joke. Something worth doing instead, e.g. "sleep". The pairing is impossible on its face, and that is the point. 不是笑话，是本来该去做的事，比如"睡觉"。这句话本身就不成立，这就是它的力度。
-- **brand hedge / 品牌对冲**: another brand in the same slot, e.g. "Starbucks". Shows the slot was an ad all along. Plain text only, no logos. 同一位置换成别家名字，比如"星巴克"，让人看出那个位置本来就是广告位。只用纯文字。
+- **brand hedge / 品牌对冲**: another brand in the same slot, e.g. "Tesla". Shows the slot was an ad all along. Plain text only, no logos. 同一位置换成别家名字，比如"特斯拉"，让人看出那个位置本来就是广告位。只用纯文字。
 - **literal / 原味**: the sentence eats itself, e.g. "using {brand}" → "Using Claude and Claude time?". Use `{brand}` as a placeholder. 句子自己咬自己，比如"使用 {brand}"。用 `{brand}` 占位。
 
 An entry that only works for one brand (Claude → "Shannon") goes under that brand's section in words.md (e.g. `### 原味 英` under `## 品牌：Claude`), not in the shared pools. 只对某个品牌成立的梗（Claude → "香农"）放在 words.md 里该品牌的小节下（如 `## 品牌：Claude` 下的 `### 原味 中`），不放共用池。

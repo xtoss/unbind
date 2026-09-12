@@ -41,7 +41,7 @@
     display: flex; justify-content: space-between; align-items: baseline;
     padding: 1.5rem 0 0;
   }
-  header h1 { font-size: 1.1rem; font-weight: 600; letter-spacing: .04em; margin: 0; }
+  header h1 { font-size: 1.6rem; font-weight: 600; letter-spacing: .04em; margin: 0; }
   .lang { display: flex; gap: .25rem; }
   .lang button {
     font: inherit; font-size: .85rem; background: none; border: 1px solid var(--line);
@@ -72,7 +72,6 @@
 
   section { margin-top: 3.5rem; }
   section.demo { margin-top: 2rem; }
-  figure.ref { margin-top: 1rem; opacity: .85; }
   h2 { font-size: 1.15rem; font-weight: 600; margin: 0 0 .75rem; }
   p { margin: .5rem 0; }
   .shots { display: flex; flex-direction: column; gap: 1.25rem; margin-top: 1rem; }
@@ -85,6 +84,15 @@
   /* Redrawn "after" card. All measurements are taken from screenshots/claude.png (1884x634)
      and expressed in container-width units so the card scales as one piece. */
   figure.redraw-wrap { container-type: inline-size; }
+  figure.shot-wrap { container-type: inline-size; }
+  .shot { position: relative; }
+  .shot img { display: block; width: 100%; height: auto; border: 1px solid var(--line); border-radius: 10px; }
+  /* Fade the input box in the real screenshot the same way, as an overlay; the image file is untouched. */
+  .shot .fade {
+    position: absolute; left: 3.6cqw; right: 6.4cqw; top: 15.1cqw; height: 14.5cqw;
+    background: rgba(21, 21, 21, .5); backdrop-filter: blur(1px); -webkit-backdrop-filter: blur(1px);
+    border-radius: 1.6cqw; pointer-events: none;
+  }
   .redraw {
     position: relative;
     aspect-ratio: 1884 / 634;
@@ -105,6 +113,8 @@
   .redraw .rd-box {
     position: absolute; left: 4cqw; right: 4cqw; top: 15.45cqw; height: 13.75cqw;
     background: #20201f; border: 1px solid #363635; border-radius: 1.3cqw;
+    /* The line is the point; the box is context. Same fade is laid over the real screenshot below. */
+    opacity: .5; filter: blur(1px);
     font-family: system-ui, -apple-system, "Segoe UI", Roboto, "PingFang SC", "Noto Sans SC", sans-serif;
   }
   .redraw .rd-ph {
@@ -152,9 +162,12 @@
 
   <section class="demo">
     <div class="shots">
-      <figure>
-        <img src="screenshots/claude.png?v=2" alt="Claude greeting (cropped)"
-             onerror="this.alt='screenshots/claude.png (missing)'">
+      <figure class="shot-wrap">
+        <div class="shot">
+          <img src="screenshots/claude.png?v=2" alt="Claude greeting (cropped)"
+               onerror="this.alt='screenshots/claude.png (missing)'">
+          <div class="fade" aria-hidden="true"></div>
+        </div>
         <figcaption>Claude · <span data-i18n="before"></span></figcaption>
       </figure>
       <figure class="redraw-wrap">
@@ -183,11 +196,6 @@
         <div class="toast" id="toast"></div>
         <div class="kinds" id="kinds" role="group" aria-label="Kind"></div>
       </figure>
-      <figure class="ref">
-        <img src="screenshots/chatgpt.png?v=2" alt="ChatGPT greeting (cropped)" loading="lazy"
-             onerror="this.alt='screenshots/chatgpt.png (missing)'">
-        <figcaption>ChatGPT · <span data-i18n="reference"></span></figcaption>
-      </figure>
     </div>
   </section>
 
@@ -196,8 +204,6 @@
     <p data-i18n="why_1"></p>
     <p data-i18n="why_2"></p>
     <p data-i18n="why_3"></p>
-    <p data-i18n="why_4"></p>
-    <p data-i18n="why_5"></p>
   </section>
 
   <section>
@@ -234,7 +240,6 @@
       formula_tag: "formula: someone else's slogan, same trick",
       before: "before",
       after: "after",
-      reference: "for reference. This one does it comparatively well: a question, no mood attached.",
       rd_placeholder: "Type a message",
       rd_pill1: "Chat",
       rd_pill2: "Work",
@@ -242,15 +247,13 @@
       rd_level: "Medium",
       redraw_label: "redrawn, not a screenshot",
       why_h: "Why",
-      why_1: "Pairing a brand with a pleasant mood is an old advertising trick. It quietly asks you to feel the mood whenever you see the brand.",
-      why_2: "Inside an AI assistant the trick sits closer than it ever did on a billboard. It is not in an ad slot. It is the first line you read when you sit down to work, phrased as an invitation rather than a pitch. Coffee, a quiet morning, a break: these words lend the brand nothing factual. They lend it the goodwill you already have.",
-      why_3: "This kind of influence never asks for consent. You read the line every day and never give it a second thought, and that is exactly what it counts on. The moment you notice what it is doing, most of its power is gone.",
-      why_4: "unbind does one simple thing: it keeps the sentence and swaps the word. Same brand, same beat, something else in the slot. If a different word makes you laugh, the original word was only ever a word.",
-      why_5: "This is not a complaint about one product. We live in a world built out of small psychological tricks, and most of them I will never notice. This one I did. I have a right to see it clearly, and a responsibility to take some of the control back.",
+      why_1: "Pairing a brand with a particular scene or mood is an old advertising trick.",
+      why_2: "unbind does one simple thing: it keeps the sentence and swaps the word, so any binding that was put there on purpose can be undone.",
+      why_3: "We live in a world built out of small psychological tricks, and most of them I let pass. This one I did not. With coffee and Claude on my side, I am taking the control back.",
       submit_h: "Add a pairing",
       submit_p: "Got a better absurd scenario? Submit it as a GitHub issue. No account beyond GitHub is needed.",
       submit_link: "Submit via GitHub Issue",
-      disclaimer: "Unofficial satire. Not affiliated with, endorsed by, or sponsored by Anthropic or OpenAI. In our own text, brand names appear only as plain words. The screenshots are cropped excerpts of each product's own interface, shown for comparison and commentary; the logos and interfaces in them belong to their respective owners.",
+      disclaimer: "Unofficial. Not affiliated with, endorsed by, or sponsored by Anthropic, any brand named here, or any other company. In our own text, brand names appear only as plain words. The screenshots are cropped excerpts of each product's own interface, shown for comparison and commentary; the logos and interfaces in them belong to their respective owners.",
       load_error: "Could not load data/pairs.json. If you opened this file directly, serve it over HTTP instead."
     },
     zh: {
@@ -270,7 +273,6 @@
       formula_tag: "套路：别家的口号，同一个把戏",
       before: "改前",
       after: "解绑后",
-      reference: "参考。这个做得相对较好：只是一个问题，没绑情绪。",
       rd_placeholder: "输入消息",
       rd_pill1: "对话",
       rd_pill2: "协作",
@@ -278,15 +280,13 @@
       rd_level: "中",
       redraw_label: "重绘，非截图",
       why_h: "为什么",
-      why_1: "把品牌和一种愉快的情绪绑在一起，是广告业的老把戏。它悄悄要求你每次看到品牌时都感受到那种情绪。",
-      why_2: "放进 AI 助手里，这个把戏比在广告牌上更贴身。它不在广告位上，而是你每天坐下开工时读到的第一句话，用邀请的口吻，而不是叫卖。咖啡、清晨、歇一会儿，这些词借给品牌的不是任何信息，而是你原本就有的好感。",
-      why_3: "这种影响从不征求同意。你每天都看到那句话，却从没把它当回事，它依赖的正是这一点。一旦你识破它在做什么，它的力量就去了大半。",
-      why_4: "unbind 做的事很简单：句子留着，换掉那个词。同一个品牌，同一个节奏，位置上放点别的。如果换个词你就笑了，那原来那个词也只是一个词。",
-      why_5: "这不是在抱怨某个产品。我们生活在一个由无数心理小把戏搭起来的世界里，绝大多数我永远不会察觉。这一个我察觉到了。我有权看清它，也有责任把主动权拿回来，哪怕只是一部分。",
+      why_1: "把品牌和特定场景或情绪绑在一起，是广告业的老把戏。",
+      why_2: "unbind 做的事很简单：句子留着，换掉那个词，让一切刻意设计的绑定解绑。",
+      why_3: "我们生活在一个由无数心理小把戏搭起来的世界里，绝大多数我没有在意。这一个我在意了，在咖啡和 Claude 的加持下，我要把控制权拿回来。",
       submit_h: "投稿",
       submit_p: "有更荒诞的场景？通过 GitHub Issue 提交，除了 GitHub 账号不需要别的。",
       submit_link: "通过 GitHub Issue 投稿",
-      disclaimer: "非官方讽刺作品。与 Anthropic 或 OpenAI 无关联、未获其认可或赞助。我们自己写的内容里，品牌名只以纯文字出现。截图是各产品自身界面的局部节选，用于对比和评论，其中的 logo 和界面归各自所有者所有。",
+      disclaimer: "非官方项目。与 Anthropic、文中提到的任何品牌以及任何其他公司均无关联，未获其认可或赞助。我们自己写的内容里，品牌名只以纯文字出现。截图是各产品自身界面的局部节选，用于对比和评论，其中的 logo 和界面归各自所有者所有。",
       load_error: "无法加载 data/pairs.json。如果你是直接打开的文件，请用 HTTP 服务器访问。"
     }
   };

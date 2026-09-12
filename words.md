@@ -121,7 +121,6 @@
 
 ### 中
 
-- 星巴克
 - 抖音
 - 微信
 - B站
@@ -131,10 +130,10 @@
 - 路虎
 - 运通
 - 亚马逊
+- 特斯拉
 
 ### 英
 
-- Starbucks
 - TikTok
 - Excel
 - LinkedIn
@@ -146,6 +145,7 @@
 - Amazon
 - Bilibili
 - YouTube
+- Tesla
 
 ## 池：原味 (literal)
 

@@ -138,7 +138,6 @@
     },
     "brand": {
       "zh": [
-        "星巴克",
         "抖音",
         "微信",
         "B站",
@@ -147,10 +146,10 @@
         "保时捷",
         "路虎",
         "运通",
-        "亚马逊"
+        "亚马逊",
+        "特斯拉"
       ],
       "en": [
-        "Starbucks",
         "TikTok",
         "Excel",
         "LinkedIn",
@@ -161,7 +160,8 @@
         "Amex",
         "Amazon",
         "Bilibili",
-        "YouTube"
+        "YouTube",
+        "Tesla"
       ]
     },
     "literal": {

@@ -27,7 +27,7 @@ body:
     id: kind
     attributes:
       label: Kind / 类型
-      description: 'absurd = contrast (root canal); hard unbind = something worth doing instead (sleep); brand hedge = another brand in the same slot (Starbucks); literal = the sentence eats itself (using Claude); formula = the brand dropped into a famous slogan, whole sentence (A Claude is forever). / 荒诞 = 反差（补牙）；硬解绑 = 本来该去做的事（睡觉）；品牌对冲 = 同一位置换个品牌（星巴克）；原味 = 句子自己咬自己（使用 Claude）；套路 = 把品牌放进一句著名广告语，整句（Claude 恒久远）。'
+      description: 'absurd = contrast (root canal); hard unbind = something worth doing instead (sleep); brand hedge = another brand in the same slot (Tesla); literal = the sentence eats itself (using Claude); formula = the brand dropped into a famous slogan, whole sentence (A Claude is forever). / 荒诞 = 反差（补牙）；硬解绑 = 本来该去做的事（睡觉）；品牌对冲 = 同一位置换个品牌（特斯拉）；原味 = 句子自己咬自己（使用 Claude）；套路 = 把品牌放进一句著名广告语，整句（Claude 恒久远）。'
       options:
         - absurd / 荒诞
         - hard unbind / 硬解绑
