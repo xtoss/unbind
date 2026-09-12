@@ -1,3 +1,10 @@
 .DS_Store
 .claude/
+.obsidian/
+# No Markdown leaves this repo except the four public site files.
+*.md
+!README.md
+!CONTRIBUTING.md
+!words.md
+!screenshots/README.md
 SPEC.md

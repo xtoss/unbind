@@ -4,7 +4,7 @@ A tiny satire of brand-and-mood pairing in AI greetings.
 
 A dictionary of brand-and-mood bindings, and their undoing. Some products greet you with a line like "Coffee and Claude time?". It quietly ties a brand to a pleasant feeling. **unbind** keeps the sentence and swaps the word, at random:
 
-> Claude and **a root canal** time?
+> **Root canal** and Claude time?
 > **报税**和 Claude 时间？
 
 If the trick works one way, it should work the other way too.

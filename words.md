@@ -195,12 +195,12 @@
 
 - 出处: Coffee and Claude time? — claude.ai new chat greeting (2026-09-12)
 - 句式中: {mood}和 {brand} 时间？
-- 句式英: {brand} and {mood} time?
+- 句式英: {mood} and {brand} time?
 
 ### 原味 中
 
 - 香农
 
-### 原味 英
+### 套路 英
 
-- Shannon
+- {brand} and Shannon time?

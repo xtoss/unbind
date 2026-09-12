@@ -40,7 +40,7 @@ body:
     id: mood
     attributes:
       label: Scenario / 场景
-      description: 'Fills the blank in the brand''s greeting, e.g. "Claude and ___ time?". Keep it as short as "Coffee": four syllables at most. / 和 "Coffee" 一样短，最多四个音节；中文两到四个字。'
+      description: 'Fills the blank in the brand''s greeting, e.g. "___ and Claude time?". Keep it as short as "Coffee": four syllables at most. / 和 "Coffee" 一样短，最多四个音节；中文两到四个字。'
       placeholder: "e.g. root canal / 例如：补牙"
     validations:
       required: true

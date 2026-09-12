@@ -10,15 +10,17 @@
       },
       "templates": {
         "zh": "{mood}和 {brand} 时间？",
-        "en": "{brand} and {mood} time?"
+        "en": "{mood} and {brand} time?"
       },
       "pools": {
         "literal": {
           "zh": [
             "香农"
-          ],
+          ]
+        },
+        "formula": {
           "en": [
-            "Shannon"
+            "{brand} and Shannon time?"
           ]
         }
       }

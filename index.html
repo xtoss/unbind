@@ -370,9 +370,13 @@
     const tpl = FULL_SENTENCE.has(entry.k) ? "{mood}" : (brandEntry.templates[lang] || brandEntry.templates.en);
     const [before, rest] = tpl.split("{mood}");
     const fill = (s) => s.replace("{brand}", brand);
+    // English: the swapped word opens the sentence, so capitalize whichever piece comes first.
+    const cap = (str) => str.replace(/^\s*[a-z]/, (c) => c.toUpperCase());
+    const head = fill(before);
+    const moodShown = (lang === "en" && head.trim() === "") ? cap(mood) : mood;
     const parts = () => [
-      document.createTextNode(fill(before)),
-      Object.assign(document.createElement("em"), { textContent: mood }),
+      document.createTextNode(lang === "en" ? cap(head) : head),
+      Object.assign(document.createElement("em"), { textContent: moodShown }),
       document.createTextNode(fill(rest))
     ];
     greetingEl.replaceChildren(...parts());
