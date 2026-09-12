@@ -1,0 +1,58 @@
+name: Submit a pairing / 投稿
+description: Suggest a new scenario, or a new brand with its real greeting. / 投一个新场景，或一个新品牌及其真实欢迎语。
+title: "[pairing] "
+labels: ["submission"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for contributing. Keep it absurd and light: nothing scary or heavy, no real people, no slurs, nothing targeting a group.
+        感谢投稿。无厘头就好，别吓人、别沉重、别伤人：不要真实人物、不要歧视性内容、不要针对特定群体。
+  - type: dropdown
+    id: language
+    attributes:
+      label: Language / 语言
+      options:
+        - en
+        - zh
+    validations:
+      required: true
+  - type: input
+    id: brand
+    attributes:
+      label: Brand (optional) / 品牌（可选）
+      description: 'Leave empty for an existing brand. For a new brand, give its real greeting line and where you saw it, e.g. "Notion: Good morning, Jamie — notion.so home".'
+      placeholder: "Claude"
+  - type: dropdown
+    id: kind
+    attributes:
+      label: Kind / 类型
+      description: 'absurd = contrast (root canal); hard unbind = something worth doing instead (sleep); brand hedge = another brand in the same slot (Starbucks); literal = the sentence eats itself (using Claude); formula = the brand dropped into a famous slogan, whole sentence (A Claude is forever). / 荒诞 = 反差（补牙）；硬解绑 = 本来该去做的事（睡觉）；品牌对冲 = 同一位置换个品牌（星巴克）；原味 = 句子自己咬自己（使用 Claude）；套路 = 把品牌放进一句著名广告语，整句（Claude 恒久远）。'
+      options:
+        - absurd / 荒诞
+        - hard unbind / 硬解绑
+        - brand hedge / 品牌对冲
+        - literal / 原味
+        - formula / 套路
+    validations:
+      required: true
+  - type: input
+    id: mood
+    attributes:
+      label: Scenario / 场景
+      description: 'Fills the blank in the brand''s greeting, e.g. "Claude and ___ time?". Keep it as short as "Coffee": four syllables at most. / 和 "Coffee" 一样短，最多四个音节；中文两到四个字。'
+      placeholder: "e.g. root canal / 例如：补牙"
+    validations:
+      required: true
+  - type: textarea
+    id: note
+    attributes:
+      label: Note (optional) / 备注（可选）
+      description: Anything the maintainer should know. / 任何想让维护者知道的。
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: Confirmation / 确认
+      options:
+        - label: This is my own wording and I release it under the MIT license. / 这是我自己写的，同意以 MIT 许可发布。
+          required: true
