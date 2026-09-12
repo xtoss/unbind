@@ -33,6 +33,48 @@ Like an entry? Give its submission issue a 👍 on GitHub. There is no vote butt
 
 Entry format in words.md / 条目格式: `- root canal` or `- root canal | 3`.
 
+## Use the data / 取用词库
+
+The word list is a public static file. Any script, userscript, or app may fetch it; GitHub Pages serves it with `Access-Control-Allow-Origin: *`, so a plain `fetch` from another origin works. We do not write or host userscripts ourselves; we keep the data stable so you can.
+
+词库是公开的静态文件，任何脚本、油猴脚本或应用都可以拉取；GitHub Pages 自带跨域允许头，别的域上直接 `fetch` 就行。我们自己不写、不托管油猴脚本，只保证数据稳定，让你能写。
+
+```
+https://unbind.eytoss.com/data/pairs.json
+```
+
+Shape / 结构:
+
+```json
+{
+  "schema": 1,
+  "version": "5a7008d4",
+  "brands": [
+    {
+      "id": "claude",
+      "name": "Claude",
+      "source": { "text": "Coffee and Claude time?", "where": "claude.ai new chat greeting", "seen": "2026-09-12" },
+      "templates": { "en": "{mood} and {brand} time?", "zh": "{mood}和 {brand} 时间？" },
+      "pools": { "formula": { "en": ["{brand} and Shannon time?"] } }
+    }
+  ],
+  "pools": {
+    "absurd":  { "en": ["taxes", "..."], "zh": ["报税", "..."] },
+    "hard":    { "en": ["sleep", "..."], "zh": ["睡觉", "..."] },
+    "brand":   { "en": ["Tesla", "..."], "zh": ["特斯拉", "..."] },
+    "literal": { "en": ["using {brand}", "..."], "zh": ["使用 {brand}", "..."] },
+    "formula": { "en": ["A {brand} is forever.", "..."], "zh": ["{brand} 恒久远，一颗永流传。", "..."] }
+  }
+}
+```
+
+- `schema` changes only when the shape changes. `version` is a hash of the source list; if it changed, the words changed. `schema` 只在结构变时改；`version` 是词库源文件的哈希，变了就是词变了。
+- To make a line / 生成一句: pick a brand, pick an entry from one or more pools (top-level pools plus that brand's own `pools`, same shape), replace `{brand}` in the entry with the brand name, then put the entry into the brand's template at `{mood}`. 选一个品牌，从一个或几个池里选一条（顶层池加该品牌自己的 `pools`，形状相同），把条目里的 `{brand}` 换成品牌名，再把条目填进该品牌模板的 `{mood}`。
+- `formula` entries are whole sentences: replace `{brand}` and show them as they are, no template. `formula` 池是整句，替换 `{brand}` 后直接显示，不套模板。
+- In English the entry opens the sentence, so capitalize its first letter. 英文里条目在句首，首字母要大写。
+- An entry may be a string or `{ "text": "...", "weight": 3 }`; missing weight is 1. Draw proportionally if you like. 条目可以是字符串或带 `weight` 的对象，没写按 1，愿意的话按权重抽。
+- We will not rename fields or move the file without bumping `schema`. 不升 `schema` 就不改字段名、不挪文件。
+
 ## Screenshots / 截图
 
 Crop to the greeting line only. Do not include the whole page, sidebars, or any account information.

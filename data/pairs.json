@@ -1,4 +1,6 @@
 {
+  "schema": 1,
+  "version": "5a7008d4",
   "brands": [
     {
       "id": "claude",

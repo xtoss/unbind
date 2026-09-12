@@ -10,6 +10,9 @@ words.md format (headings are what the parser keys on):
   ## 品牌：Claude (claude)      a brand; "- 键: 值" lines for name/source/templates,
                                 then "### 池名 中/英" subsections for brand-only entries
   - entry | 3                   optional weight after a pipe
+
+The JSON gets two extra top-level fields: "schema" (bumped by hand when the shape changes)
+and "version" (a hash of words.md, so consumers can tell when the list changed).
 """
 import json, re, sys
 from pathlib import Path
@@ -64,10 +67,13 @@ def export(d):
 
 
 def build():
-    d = {"brands": [], "pools": {k: {"zh": [], "en": []} for k, _ in POOLS}}
+    import hashlib
+    src = MD.read_text(encoding="utf-8")
+    d = {"schema": 1, "version": hashlib.sha1(src.encode("utf-8")).hexdigest()[:8],
+         "brands": [], "pools": {k: {"zh": [], "en": []} for k, _ in POOLS}}
     section = None   # ("pool", id) or ("brand", dict)
     target = None    # list to append entries to
-    for raw in MD.read_text(encoding="utf-8").splitlines():
+    for raw in src.splitlines():
         line = raw.rstrip()
         m = re.match(r"^## 池：(\S+) \((\w+)\)", line)
         if m:
