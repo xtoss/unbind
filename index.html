@@ -218,7 +218,7 @@
 
   const I18N = {
     en: {
-      intro: "Some products greet you with a warm little pairing: coffee and their name in the same breath. This page unbinds it.",
+      intro: "Some products open with a greeting that puts coffee next to their own name. This page unties the two.",
       again: "Another one",
       copy: "Copy",
       copied: "Copied.",
@@ -254,7 +254,7 @@
       load_error: "Could not load data/pairs.json. If you opened this file directly, serve it over HTTP instead."
     },
     zh: {
-      intro: "有些产品用一句温暖的小搭配跟你打招呼：咖啡和它的名字，在同一口气里。这个页面把它解开。",
+      intro: "有些产品的欢迎语会把咖啡和自己的名字放在一句话里。这个页面把它们分开。",
       again: "再来一个",
       copy: "复制",
       copied: "已复制。",
@@ -405,7 +405,8 @@
   $("#submit-link").href = REPO_URL + "/issues/new?template=submission.yml";
 
   applyI18n();
-  fetch("data/pairs.json")
+  // Always revalidate with the server so a word-list update shows up without a hard refresh.
+  fetch("data/pairs.json", { cache: "no-cache" })
     .then((r) => { if (!r.ok) throw new Error(r.status); return r.json(); })
     .then((d) => { data = d; render(); })
     .catch(() => { greetingEl.textContent = I18N[lang].load_error; greetingEl.style.fontSize = "2cqw"; greetingEl.style.whiteSpace = "normal"; });
