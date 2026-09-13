@@ -47,15 +47,9 @@ screenshots/                            cropped greeting screenshots
 
 Open a GitHub issue using the **Submit a pairing** template, or edit `words.md` in a pull request and run the build script. See [CONTRIBUTING.md](CONTRIBUTING.md).
 
-Want the word list in your own script? It is a public JSON with a stable shape; see [Use the data](CONTRIBUTING.md#use-the-data--取用词库).
+Want the word list in your own script? It is a public JSON with a stable shape; see [CONTRIBUTING.md](CONTRIBUTING.md).
 
-## Disclaimer
-
-Unofficial. Not affiliated with, endorsed by, or sponsored by Anthropic, any brand named here, or any other company. In our own text, brand names appear only as plain words. The screenshots are cropped excerpts of each product's own interface, shown for comparison and commentary; the logos and interfaces in them belong to their respective owners.
-
-## License
-
-MIT
+Unofficial. Not affiliated with any company named here. Screenshots are cropped excerpts; logos belong to their owners.
 
 ---
 
@@ -75,6 +69,6 @@ MIT
 
 线上：<https://unbind.eytoss.com/>。本地运行：`python3 -m http.server 8000`，然后打开 <http://localhost:8000>。
 
-投稿：用仓库里的 **投稿** Issue 模板，或直接改 `words.md` 提 PR，然后跑 `python3 tools/build_pairs.py`。想在自己的脚本里用词库：它是结构稳定的公开 JSON，见 [CONTRIBUTING 的取用词库一节](CONTRIBUTING.md#use-the-data--取用词库)。
+投稿：用仓库里的 **投稿** Issue 模板，或直接改 `words.md` 提 PR，然后跑 `python3 tools/build_pairs.py`。想在自己的脚本里用词库：它是结构稳定的公开 JSON，见 [CONTRIBUTING.md](CONTRIBUTING.md)。
 
-非官方项目，与 Anthropic、文中提到的任何品牌以及任何其他公司均无关联。我们自己写的内容里品牌名只以纯文字出现；截图是各产品界面的局部节选，用于对比评论，其中的 logo 和界面归各自所有者所有。MIT 许可。
+非官方项目，与文中提到的任何公司无关。截图为局部节选，logo 归各自所有者。
